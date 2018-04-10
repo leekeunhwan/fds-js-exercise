@@ -5,6 +5,7 @@
 ---
 
 ```javascript
+// 본인 풀이
 function bigger(min, max) {
   if (min < max) {
     console.log(`큰 수는 ${max}입니다.`);
@@ -17,12 +18,14 @@ bigger(233, 552);
 ```
 
 ```js
+// 다른분 풀이
 function larger(x, y) {
   return Math.max(x, y);
 }
 ```
 
 ```js
+// 선생님 풀이
 function larger(x, y) {
   return x > y ? x : y;
 }
@@ -43,6 +46,7 @@ throw new Error("입력값이 잘못되었습니다.");
 ---
 
 ```javascript
+// 본인풀이
 function test(a, b, c) {
   if (a * b * c > 0) {
     console.log(`true`);
@@ -59,7 +63,7 @@ test(100, 0, 300);
 ```
 
 ```js
-//보다 좋은 예
+// 보다 좋은 예, 선생님 풀이
 
 function isPositive(a, b, c) {
   const multi = a * b * c;
@@ -96,6 +100,7 @@ limit(3, 7, 0); -> 3
 ---
 
 ```js
+// 본인 풀이
 function num3(min, max, input) {
   if (min > input) {
     return min;
@@ -110,6 +115,7 @@ num3(3, 7, 10);
 ```
 
 ```js
+//본인 풀이 2
 function limit(min, max, input) {
   switch (true) {
     case min > input:
@@ -135,6 +141,7 @@ limit(3, 7, 5);
 ---
 
 ```js
+// 본인 풀이, 선생님 풀이
 function printEvenOrOdd() {
   for (i = 1; i <= 20; i++) {
     if (i % 2 === 0) {
@@ -157,6 +164,7 @@ printEvenOrOdd();
 ---
 
 ```js
+// 본인 풀이
 function gongbae() {
   for (i = 1; i <= 100; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
@@ -177,6 +185,7 @@ gongbae();
 ---
 
 ```js
+// 본인 풀이
 function yaksu(num) {
   for (i = 1; i <= num; i++) {
     if (num % i === 0) {
@@ -196,9 +205,40 @@ yaksu(15);
 
 ---
 
+```js
+function sosu(num) {
+  for (i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+sosu(13);
+```
+
 ### 문제 8
 
 1 부터 100 까지의 수를 차례대로 출력하되, 자릿수에 3, 6, 9 중 하나라도 포함되어 있으면 '짝!'을 대신 출력하는 프로그램을 작성하세요.
+
+---
+
+```js
+// 선생님 풀이
+function samyookgoo() {
+  for (i = 1; i <= 100; i++) {
+    const result = i.toString();
+    if (result.includes("3") || result.includes("6") || result.includes("9")) {
+      console.log("짝!");
+    } else {
+      console.log(i);
+    }
+  }
+}
+
+samyookgoo();
+```
 
 ### 문제 9
 
@@ -226,6 +266,48 @@ yaksu(15);
 * * *
 * * * *
 * * * * *
+```
+
+---
+
+```js
+// 중첩 for문 로직 이해
+
+function stair(n) {
+  for (let i = 0; i < n; i++) {
+    console.log("안쪽 루프 시작");
+    for (let j = 0; j < i; j++) {
+      console.log(`i: ${i}, j: ${j}`);
+    }
+    console.log("안쪽 루프 끝");
+  }
+}
+```
+
+```js
+// 본인 풀이, 선생님 풀이
+function stars(num) {
+  for (let i = 0; i < num; i++) {
+    let result = "";
+    for (let m = 0; m <= i; m++) {
+      result += "*";
+    }
+    console.log(result);
+  }
+}
+
+stars(5);
+```
+
+```js
+// 선생님 풀이
+function stars(num) {
+  for (let i = 1; i < num; i++) {
+    console.log("* ".repeat(i + 1));
+  }
+}
+
+stars(5);
 ```
 
 ### 문제 10
@@ -262,6 +344,25 @@ yaksu(15);
     *
 ```
 
+---
+
+```js
+// 선생님 풀이
+function line(n, i) {
+  const str = " ".repeat(n - i - 1) + "* ".repeat(i + 1);
+  console.log(str);
+}
+
+function diamond(n) {
+  for (let i = 0; i < n; i++) {
+    line(n, i);
+  }
+  for (let i = n - 2; i >= 0; i--) {
+    line(n, i);
+  }
+}
+```
+
 ### 문제 11
 
 두 수를 입력받아서, 두 수의 최대공약수를 반환하는 함수를 작성하세요. ([유클리드 호제법](https://ko.wikipedia.org/wiki/%EC%9C%A0%ED%81%B4%EB%A6%AC%EB%93%9C_%ED%98%B8%EC%A0%9C%EB%B2%95)을 참고하세요.)
@@ -269,6 +370,78 @@ yaksu(15);
 ### 문제 12
 
 세 수를 입력받아 큰 것부터 차례대로 출력하는 함수를 작성하세요.
+
+---
+
+```js
+// 본인 풀이
+function sortnum(num1, num2, num3) {
+  var arr = [num1, num2, num3];
+  arr.sort(function(a, b, c) {
+    return a - b;
+  });
+  console.log(arr);
+}
+sortnum(13443, 144, 555);
+```
+
+```js
+// 선택 정렬 - 선생님 풀이
+function big(x, y, z) {
+  let larger = x > y ? x : y;
+  let smaller1 = x > y ? y : x;
+  let max = larger > z ? larger : z;
+  let smaller2 = larger > z ? z : larger;
+  console.log(max);
+  if (smaller1 > smaller2) {
+    console.log(smaller1);
+    console.log(smaller2);
+  } else {
+    console.log(smaller2);
+    console.log(smaller1);
+  }
+}
+```
+
+```js
+// 선택 정렬 - 선생님 풀이
+function sort(x, y, z) {
+  // 셋 중에 제일 큰 놈을 따로 빼기
+  let larger = x > y ? x : y;
+  let smaller1 = x > y ? y : x;
+  let max = larger > z ? larger : z;
+  let smaller2 = larger > z ? z : larger;
+  let min = smaller1 > smaller2 ? smaller2 : smaller1;
+  let mid = smaller1 > smaller2 ? smaller1 : smaller2;
+  console.log(max);
+  console.log(mid);
+  console.log(min);
+}
+```
+
+```js
+// 버블 정렬 - 선생님 풀이
+function sort(x, y, z) {
+  if (x > y) {
+    const temp = x;
+    x = y;
+    y = temp;
+  }
+  if (y > z) {
+    const temp = y;
+    y = z;
+    z = temp;
+  }
+  if (x > y) {
+    const temp = x;
+    x = y;
+    y = temp;
+  }
+  console.log(z);
+  console.log(y);
+  console.log(x);
+}
+```
 
 ### 문제 13
 
