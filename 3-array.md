@@ -92,7 +92,7 @@ removeFalsy([0, 2, 3, NaN]); //  [2,3]
 ---
 
 ```js
-/ 본인 풀이
+// 본인 풀이
 function removeOverlap(arr) {
   let overArr = arr;
   for (i = 0; i < arr.length; i++) {
