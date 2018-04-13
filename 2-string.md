@@ -389,13 +389,69 @@ maxLength("hello javascript world");
 
 문자열 `s`과 자연수 `n`을 입력받아, `s`의 첫 `n`개의 문자만으로 이루어진 새 문자열을 반환하는 함수를 작성하세요.
 
+---
+
+```js
+// 본인 풀이
+function firstStr(str, num) {
+  let arr = str.split("");
+  let newStr = "";
+  for (i = 0; i < num; i++) {
+    newStr += arr[i];
+  }
+  return newStr;
+}
+
+firstStr("javascript", 4);
+```
+
 ### 문제 13
 
 Camel case 의 문자열을 입력받아, snake case 로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
 
+---
+
+```js
+// 본인 풀이
+function camelToSnake(str) {
+  let newStr = "";
+  for (i = 0; i < str.length; i++) {
+    if (str[i] !== str[i].toUpperCase()) {
+      newStr += str[i];
+    } else {
+      newStr += "_" + str[i].toLowerCase();
+    }
+  }
+  return newStr;
+}
+
+camelToSnake("helloJavascriptWorld");
+```
+
 ### 문제 14
 
 Snake case 의 문자열을 입력받아, camel case 로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
+
+---
+
+```js
+// 본인 풀이
+function snakeToCame(str) {
+  let newStr = "";
+  for (i = 0; i < str.length; i++) {
+    if (str[i] != "_") {
+      newStr += str[i];
+      console.log(newStr);
+    } else {
+      newStr += str[i + 1].toUpperCase();
+      i++;
+    }
+  }
+  return newStr;
+}
+
+snakeToCame("hello_javascript_world");
+```
 
 ### 문제 15
 
@@ -409,6 +465,28 @@ split('Hello World', ' '); -> ['Hello', 'World']
 split('let,const,var', ',') -> ['let', 'const', 'var']
 ```
 
+---
+
+```js
+// 본인 풀이
+function split(str1, str2) {
+  let arr = [];
+  let str = "";
+  for (i = 0; i < str1.length; i++) {
+    if (str1[i] != str2) {
+      str += str1[i];
+    } else {
+      arr.push(str);
+      str = "";
+    }
+  }
+  arr.push(str);
+  return arr;
+}
+
+split("dlrmsghks7@gmail.com", "@");
+```
+
 ### 문제 16
 
 2 진수를 표현하는 문자열을 입력받아, 그 문자열이 나타내는 수 타입의 값을 반환하는 함수를 작성하세요. (`parseInt`를 사용하지 말고 작성해보세요.)
@@ -417,6 +495,22 @@ split('let,const,var', ',') -> ['let', 'const', 'var']
 
 ```
 convertBinary('1101'); -> 13
+```
+
+---
+
+```js
+function convertBinary(str) {
+  let arr = str.split("");
+  let result = "";
+  for (i = arr.length; i > 0; i--) {
+    result += arr[arr.length - i] * Math.pow(2, i - 1);
+    result *= 1;
+  }
+  return result;
+}
+
+convertBinary("1111"); //  13
 ```
 
 ### 문제 17

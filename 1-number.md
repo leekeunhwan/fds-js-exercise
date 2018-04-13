@@ -447,3 +447,21 @@ function sort(x, y, z) {
 ### 문제 13
 
 자연수 `n`을 입력받아, `n`번째 피보나치 수를 반환하는 함수를 작성하세요.
+
+---
+
+```js
+// 본인 풀이 - 적은 수의 계산은 금방이자만 조금만 커지면 콜백지옥이다.. 다시 다른 쪽으로 풀어봐야겠다.
+
+function fibo(num) {
+  if (num > 1) {
+    return fibo(num - 1) + fibo(num - 2);
+  } else if (num === 1) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+fibo(10);
+```
