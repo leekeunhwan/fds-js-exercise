@@ -405,6 +405,26 @@ function firstStr(str, num) {
 firstStr("javascript", 4);
 ```
 
+```js
+// 선생님 풀이
+function firstStr(s, n) {
+  let newStr = "";
+  for (let i = 0; i < s.length && i < n; i++) {
+    newStr += s[i];
+  }
+  return newStr;
+}
+```
+
+```js
+// 선생님 풀이
+function firstStr(s, n) {
+  return Array.from(s)
+    .filter((item, index) => index < n)
+    .join("");
+}
+```
+
 ### 문제 13
 
 Camel case 의 문자열을 입력받아, snake case 로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
@@ -416,7 +436,7 @@ Camel case 의 문자열을 입력받아, snake case 로 바꾼 새 문자열을
 function camelToSnake(str) {
   let newStr = "";
   for (i = 0; i < str.length; i++) {
-    if (str[i] !== str[i].toUpperCase()) {
+    if (str[i] != str[i].toUpperCase()) {
       newStr += str[i];
     } else {
       newStr += "_" + str[i].toLowerCase();
@@ -426,6 +446,21 @@ function camelToSnake(str) {
 }
 
 camelToSnake("helloJavascriptWorld");
+```
+
+```js
+// 선생님 풀이
+function camelToSnake(str) {
+  let newStr = "";
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i].toUpperCase() && i !== 0) {
+      newStr += "_" + str[i].toLowerCase();
+    } else {
+      newStr += str[i].toLowerCase();
+    }
+  }
+  return newStr;
+}
 ```
 
 ### 문제 14
@@ -500,6 +535,7 @@ convertBinary('1101'); -> 13
 ---
 
 ```js
+// 본인 풀이
 function convertBinary(str) {
   let arr = str.split("");
   let result = "";
@@ -510,7 +546,22 @@ function convertBinary(str) {
   return result;
 }
 
-convertBinary("1111"); //  13
+convertBinary("1111"); //  15
+```
+
+```js
+// 선생님 풀이
+function convertBinary(str) {
+  let num = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[str.length - i - 1] === "1") {
+      num += 2 ** i;
+    }
+  }
+  return num;
+}
+
+convertBinary("1111");
 ```
 
 ### 문제 17
